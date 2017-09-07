@@ -3,7 +3,7 @@
 window.onload = init; // Wait for the page to load before we begin animation
 var canvas;
 var ctx;// This is a better name for a global variable
-var ball;
+var BallList = [];
 function init(){
   //get the canvas
   canvas = document.getElementById('cnv');
@@ -12,25 +12,25 @@ function init(){
   canvas.height = window.innerHeight;
   canvas.style.border = 'solid black 2px';
   canvas.style.backgroundColor = 'rgba(255,255,255)';
+  for(var i = 0; i < 10000; i++){
+    BallList.push(new Ball());
+  }
   // get the context
   ctx = canvas.getContext('2d'); // This is the context
   animate(); // Call to your animate function
 }
-// To do::
-ball = {
-  x : window.innerWidth/2,
-  y : window.innerHeight/2,
-  dx: 10,
-  dy: 10,
-  r : 25
-}
+// To do:
+
+
 //  1. Declare and init variables x, y, dx, dy, radius;
 
 function animate(){
 // 2. Draw a circle (arc method) and radius
   ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
-  ctx.strokeStyle = 'rgba(0,0,0)';
-  ctx.fillStyle = 'rgba(0,0,0)';
+  for(var i = 0; i < BallList.length; i++){
+  var ball = BallList[i];
+  ctx.strokeStyle = ball.color;
+  ctx.fillStyle = ball.color;
   ctx.beginPath();
   ctx.arc(ball.x,ball.y, ball.r, Math.PI*2, 0, false);
   ctx.stroke();
@@ -41,9 +41,15 @@ function animate(){
     ball.dx = ball.dx * -1;
   }else if (ball.y >= window.innerHeight + 25 || ball.y <= 25){
     ball.dy = ball.dy * -1;
+    }
   }
   requestAnimationFrame(animate);
-
-// 3. Use conditions to change dx and dy when ball hits window edge
-
+}
+function Ball(){
+      this.x = window.innerWidth/2;
+      this.y = window.innerHeight/2;
+      this.dx = Math.random() * 10 *3;
+      this.dy = Math.random() * 10 *3;
+      this.r = Math.random() * 25 + 5;
+      this.color = "rgb(" + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + "," + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + "," + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + ")";
 }
