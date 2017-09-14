@@ -12,9 +12,9 @@ function init(){
   canvas.height = window.innerHeight;
   canvas.style.border = 'solid black 2px';
   canvas.style.backgroundColor = 'rgba(255,255,255)';
-  for(var i = 0; i < 10000; i++){
+  //for(var i = 0; i < 10; i++){
     BallList.push(new Ball());
-  }
+  //}
   // get the context
   ctx = canvas.getContext('2d'); // This is the context
   animate(); // Call to your animate function
@@ -48,8 +48,12 @@ function animate(){
 function Ball(){
       this.x = window.innerWidth/2;
       this.y = window.innerHeight/2;
-      this.dx = Math.random() * 10 *3;
-      this.dy = Math.random() * 10 *3;
+      this.dx = Math.random() * 10 *2.75;
+      this.dy = Math.random() * 10 *2.75;
       this.r = Math.random() * 25 + 5;
-      this.color = "rgb(" + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + "," + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + "," + Math.floor(Math.random() * (255 - 0 + 1)) + 0 + ")";
+      this.color = "rgb(" + Math.floor(Math.random() * (255 - 0 + 1))+","+Math.floor(Math.random()*(255-0+1))+","+Math.floor(Math.random()*(255 - 0 + 1)) + ")";
 }
+function addBall(){
+      BallList.push(new Ball());
+}
+setInterval(addBall,1000);
