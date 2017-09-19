@@ -2,31 +2,40 @@ function JSVector(x, y){
   this.x = x;
   this.y = y;
 }
-function add(vector){
+Vector.prototype.add = function(vector){
   this.x += vector.x;
   this.y += vector.y;
 }
-function addGetNew(vector){
+Vector.prototype.addGetNew = function(vector){
   return new JSVector(this.x + vector.x,this.y + vector.y);
 }
-function sub(vector){
+Vector.prototype.sub = function(vector){
   this.x -= vector.x;
   this.y -= vector.y;
 }
-function subGetNew(vector){
+Vector.prototype.subGetNew = function(vector){
   return new JSVector(this.x - vector.x, this.y- vector.y);
 }
-function mult(vector){
+Vector.prototype.mult = function(vector){
   this.x *= vector.x;
   this.y *= vector.y;
 }
-function div(vector){
+Vector.prototype.div = function(vector){
   this.x /= vector.x;
   this.y /= vector.y;
 }
-function copy(){
+Vector.prototype.copy = function(){
   return new JSVector(this.x,this.y);
 }
-function setMag(){
-  
+Vector.prototype.setMag = function(){
+  var dir = this.getDirection();
+  this.x = Math.cos(dir) * magnitude;
+  this.y = Math.sin(dir) * magnitude;
 }
+Vector.prototype.getMag = function(){
+  return Math.sqrt(this.x * this.x + this.y * this.y);
+}
+Vector.prototype.getDir = function(){
+  return Math.atan2(this.y,this.x);
+}
+Vector.prototype.
