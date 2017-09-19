@@ -38,4 +38,25 @@ Vector.prototype.getMag = function(){
 Vector.prototype.getDir = function(){
   return Math.atan2(this.y,this.x);
 }
-Vector.prototype.
+Vector.prototype.setDir = function(){
+  
+}
+Vector.prototype.normalize = function(){
+  this.divide(new JSVector(this.getMag(),this.getMag()))
+}
+Vector.prototype.lerp = function(){
+  
+}
+Vector.prototype.limit = function(factor, maximum){
+  if(Math.abs(this.x) > maximum){
+    this.x *= factor;
+  }
+  if(Math.abs(this.y) > maximum){
+    this.y *= factor;
+  }
+Vector.prototype.distance(vector){}
+  
+}
+Vector.prototype.angleBetween(vector){
+
+}
