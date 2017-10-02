@@ -30,7 +30,6 @@ function animate(){
   for(var i = 0; i < movers.length; i++){
     movers[i].update();
   }
-  attr.update();
 }
 function loadMovers(){
   for(var i=0; i < 10; i++){
@@ -46,14 +45,16 @@ function loadMovers(){
     ctx.strokeStyle = movers[i].clr;
     ctx.fillStyle = movers[i].clr;
   }
+    attr = new Attractor(new JSVector(40,30),
+              new JSVector(20,20),
+              new JSVector(5,2), 40 );
+              //"rgb(0,0,250)");
+    movers.push(attr);
     ctx.strokeStyle = "rgb(0,0,250)";
     ctx.fillStyle = "rgb(0,0,250)";
-    attr = new Attractor(new JSVector(40,30),
-            new JSVector(Math.random * 10 + 1, Math.random * 10 + 1),
-              new JSVector(0,0), 40 );
-              //"rgb(0,0,250)");
-    attr.loc = new JSVector(100,100);
     }
+
+
 //function addMover(){
 //      movers.push(new Mover());
 //}
